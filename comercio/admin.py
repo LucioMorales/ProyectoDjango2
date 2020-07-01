@@ -7,6 +7,16 @@ class ClienteAdmin(admin.ModelAdmin):
     list_display_links = ['rut','nombre','telefono',]
     search_fields = ['rut','nombre','telefono',]
 
+class ProductoAdmin(admin.ModelAdmin):
+    fieldsets = (
+        ('Descripcion', {
+          'fields': ('nombre','categoria','proveedor')  
+        }),
+        ('Variables', {
+            'fields': ('precio','stock')
+        }),
+    )
+
 admin.site.register(Categoria)
 admin.site.register(Ciudad)
 admin.site.register(Comuna)
@@ -14,5 +24,5 @@ admin.site.register(Direccion)
 admin.site.register(Cliente,ClienteAdmin)
 admin.site.register(Venta)
 admin.site.register(Proveedor)
-admin.site.register(Producto)
+admin.site.register(Producto,ProductoAdmin)
 admin.site.register(Detalle)
